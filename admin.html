@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JCL - Admin Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+
+    <!-- Password Login Section -->
+    <div id="login-overlay" style="position: fixed; top:0; left:0; width:100%; height:100%; background: #0f172a; z-index: 9999; display: flex; align-items: center; justify-content: center;">
+        <div class="form-container" style="text-align: center; max-width: 450px;">
+            <h2>🔒 Admin Security Access</h2>
+            <p style="margin-bottom: 1.5rem; color: #94a3b8; font-size: 0.9rem;">Authorized access only. Enter password to manage dashboard.</p>
+            <div class="form-group">
+                <input type="password" id="adminPassword" placeholder="Enter Password" style="text-align: center; letter-spacing: 2px;">
+            </div>
+            <button onclick="checkAdminPassword()" class="btn-submit" style="background: #0284c7;">Unlock Control Panel</button>
+            <p id="login-error" style="color: #ef4444; margin-top: 12px; display: none; font-weight: bold;"><i class="fas fa-exclamation-circle"></i> Incorrect Password!</p>
+        </div>
+    </div>
+
+    <!-- Main Admin Dashboard -->
+    <div id="admin-dashboard" style="display: none; padding: 2rem 5%;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">
+            <h2>🛠️ JCL Media & Features Control Panel</h2>
+            <a href="./index.html" class="btn-primary" style="margin: 0; border-radius: 5px; padding: 0.6rem 1.2rem;">Exit & View Website</a>
+        </div>
+
+        <div class="schedule-grid">
+            <!-- BOX 1: NAYA MEDIA & FEATURES MANAGER (PICS + VIDEOS) -->
+            <div class="match-card">
+                <h3><i class="fas fa-cloud-upload-alt" style="color: #25d366; margin-right: 8px;"></i> Add Website Features (Media)</h3>
+                <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1.5rem;">Upload new match pictures or tournament videos here.</p>
+                
+                <div class="form-group">
+                    <label>Media Type:</label>
+                    <select id="mediaType" style="width:100%; padding:0.8rem; background: var(--bg-dark); color:white; border-radius:6px; border:1px solid rgba(255,255,255,0.2);">
+                        <option value="image">📸 Picture / Image</option>
+                        <option value="video">🎥 Video (MP4 / YouTube Link)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Media URL / Link:</label>
+                    <input type="text" id="mediaUrl" placeholder="Paste image path or video link here">
+                </div>
+                <div class="form-group">
+                    <label>Feature Title / Description:</label>
+                    <input type="text" id="mediaTitle" placeholder="e.g. Stunning catch by Ali! / Match 1 Highlights">
+                </div>
+                <button onclick="addNewFeatureMedia()" class="btn-submit" style="background: #25d366; margin-bottom: 1.5rem;">Upload & Publish Feature</button>
+                
+                <h4 style="margin-bottom: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">📋 Active Features List</h4>
+                <div id="admin-media-list" style="display: flex; flex-direction: column; gap: 10px; max-height: 150px; overflow-y: auto;">
+                    <!-- Uploaded items with delete buttons will load here -->
+                </div>
+            </div>
+
+            <!-- BOX 2: WEBSITE AUDIO & MUSIC MANAGER -->
+            <div class="match-card">
+                <h3><i class="fas fa-music" style="color: #a855f7; margin-right: 8px;"></i> Background Music Player</h3>
+                <div class="form-group">
+                    <label>Audio Link (MP3 URL):</label>
+                    <input type="text" id="musicUrl" placeholder="Paste .mp3 audio link here">
+                </div>
+                <div class="form-group">
+                    <label>Music Status:</label>
+                    <select id="musicStatus" style="width:100%; padding:0.8rem; background: var(--bg-dark); color:white; border-radius:6px;">
+                        <option value="PLAY">🔊 Play Music Automatically</option>
+                        <option value="PAUSE">🔇 Mute / Pause Music</option>
+                    </select>
+                </div>
+                <button onclick="saveMusicSettings()" class="btn-submit" style="background: #a855f7;">Save Audio Settings</button>
+            </div>
+
+            <!-- BOX 3: Update Points Table Box -->
+            <div class="match-card">
+                <h3><i class="fas fa-chart-bar" style="color: #0284c7; margin-right: 8px;"></i> Points Table Standings</h3>
+                <div class="form-group">
+                    <select id="updateTeamSelect" style="width:100%; padding:0.8rem; background: var(--bg-dark); color:white; border-radius:6px;">
+                        <option value="0">Lahore Tigers 🐯</option>
+                        <option value="1">Karachi Kings 👑</option>
+                        <option value="2">Islamabad United 🦁</option>
+                    </select>
+                </div>
+                <div class="form-group"><input type="number" id="teamWins" placeholder="Matches Won"></div>
+                <div class="form-group"><input type="number" id="teamLosses" placeholder="Matches Lost"></div>
+                <div class="form-group"><input type="number" id="teamPoints" placeholder="Total Points"></div>
+                <button onclick="savePointsTable()" class="btn-submit" style="background: #0284c7;">Apply Standings</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
