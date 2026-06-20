@@ -1,0 +1,97 @@
+/* ==========================================
+   JCL PRO FEATURES & MEDIA UPDATES
+   ========================================== */
+
+/* Main Grid for Features (Pictures & Videos) */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 1.5rem 0;
+}
+
+/* Card Wrapper with Smooth Hover Effects */
+.gallery-card-wrapper {
+    background: var(--bg-card-dark, #1e293b);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(2, 132, 199, 0.2);
+}
+
+/* Social Interactive Buttons Section */
+.social-interaction-bar {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.social-btn {
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.2s;
+}
+
+.social-btn:hover {
+    opacity: 0.8;
+}
+
+.like-btn { color: #ef4444; }
+.share-btn { color: #0284c7; }
+
+/* Dedicated Comments Scrollable Area */
+.comments-display-box {
+    max-height: 90px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+    padding-right: 5px;
+}
+
+.comments-display-box::-webkit-scrollbar {
+    width: 4px;
+}
+
+.comments-display-box::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* Form Inputs inside Live Feature Cards */
+.media-comment-input {
+    width: 100%;
+    margin-bottom: 6px;
+    padding: 6px 10px;
+    background: var(--bg-dark, #0f172a);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.media-comment-input:focus {
+    border-color: #0284c7;
+    outline: none;
+}
+
+/* Admin Dashboard Active Media List styling */
+#admin-media-list div {
+    transition: background 0.2s;
+}
+
+#admin-media-list div:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
